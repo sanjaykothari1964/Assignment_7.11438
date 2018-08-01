@@ -1,0 +1,25 @@
+
+#Write a function to find moving average in an array over a window: Test it over [3, 5, 7, 2, 8, 10, 11, 65, 72, 81, 99, 100, 150] and window of 3
+def mov_avg_val(mylist, N):
+    cumsum, moving_aves = [0], []
+    for i, x in enumerate(mylist, 1):
+        cumsum.append(cumsum[i-1] + x) # summing up all the values one by one and appending the list
+        if i>=N:
+            moving_ave = round(((cumsum[i] - cumsum[i-N])/N),2) #computing the moving average using temp array sum array cumsum
+            #can do stuff with moving_ave here
+            moving_aves.append(moving_ave) # listing the moving average as an single array
+    print("Moving average values list: ", moving_aves)
+    print("Length of the list l-N+1: ", len(moving_aves))
+    mylist = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+N = 4
+
+mov_avg_val(mylist,N)
+Moving average values list:  [25.0, 35.0, 45.0, 55.0, 65.0, 75.0, 85.0]
+Length of the list l-N+1:  7
+In [56]:
+mylist = [3, 5, 7, 2, 8, 10, 11, 65, 72, 81, 99, 100, 150]
+N = 3
+
+mov_avg_val(mylist,N)
+Moving average values list:  [5.0, 4.67, 5.67, 6.67, 9.67, 28.67, 49.33, 72.67, 84.0, 93.33, 116.33]
+Length of the list l-N+1:  11
